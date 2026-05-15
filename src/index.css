@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* 1. Luxury Dark Mode Colors */
+  --color-darkBg: #0d080a; /* Rich Rose-tinted Obsidian Black */
+  --color-darkCard: #160f12; /* Deep Crimson Charcoal */
+
+  /* 2. Vibrant Accent Colors */
+  --color-accentViolet: #f43f5e; /* Electric Crimson Rose */
+  --color-accentEmerald: #2dd4bf; /* Neon Mint Mint */
+
+  /* 3. NEW: Smooth Global Spring Timings for animations */
+  --animate-spring: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+  font-family: var(--font-sans);
+  transition:
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4. FIXED: Wipes out the cheap native hand cursor pointer globally */
+@media (min-width: 1024px) {
+  html,
+  body,
+  a,
+  button,
+  svg,
+  [role="button"],
+  .cursor-pointer,
+  * {
+    cursor: none !important;
+  }
+
+  /* Retain the safe standard text beam indicator ONLY for form inputs */
+  input,
+  textarea,
+  select {
+    cursor: text !important;
+  }
+}
+
+/* 5. NEW: Smooth System Scrollbar for Premium Translucent Themes */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-darkBg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 99px;
+  border: 2px solid var(--color-darkBg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accentViolet);
+}
