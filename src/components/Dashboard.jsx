@@ -2,10 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function DashboardChart() {
-  // Tracking mouse hover states over weekdays/months
   const [hoveredIdx, setHoveredIdx] = useState(null);
-
-  // Core coordinates for the vertical interactive bar and hover data tooltips
   const timelinePoints = [
     { name: "Mon", x: 25, inflow: "$12,400", outflow: "$8,100" },
     { name: "Tue", x: 133, inflow: "$34,200", outflow: "$14,500" },
@@ -50,7 +47,6 @@ export default function DashboardChart() {
       variants={containerVariants}
       className="w-full max-w-5xl mx-auto p-6 md:p-8 rounded-2xl border border-white/[0.06] bg-darkCard/40 backdrop-blur-xl shadow-2xl shadow-black/50 text-white select-none"
     >
-      {/* 1. HEADER */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.06] pb-6">
         <div>
           <motion.h3
@@ -82,10 +78,7 @@ export default function DashboardChart() {
           </div>
         </motion.div>
       </div>
-
-      {/* 2. GRAPH CONTAINER WITH HOVER DETECTION MATRIX */}
       <div className="relative w-full h-72 md:h-80 mt-8 group/chart">
-        {/* Y-Axis Grid Background */}
         <div className="absolute inset-0 flex flex-col justify-between pointer-events-none text-[10px] font-medium text-gray-600 tracking-wider pb-6">
           <div className="w-full flex items-center gap-4">
             <span>9000</span>
@@ -108,8 +101,6 @@ export default function DashboardChart() {
             <div className="h-px bg-white/[0.03] w-full" />
           </div>
         </div>
-
-        {/* Dynamic Vector Curves Surface */}
         <svg
           className="absolute inset-0 w-full h-full pb-6 z-10"
           viewBox="0 0 700 320"
@@ -129,8 +120,6 @@ export default function DashboardChart() {
               />
             </linearGradient>
           </defs>
-
-          {/* Animated Area Gradient Glow */}
           <motion.path
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -138,8 +127,6 @@ export default function DashboardChart() {
             d="M 0 190 Q 116 110 233 170 T 466 110 T 700 60 L 700 320 L 0 320 Z"
             fill="url(#inflowGlow)"
           />
-
-          {/* Outflow Line (Grey) */}
           <motion.path
             variants={pathVariants}
             custom={0.3}
@@ -149,8 +136,6 @@ export default function DashboardChart() {
             strokeWidth="2.5"
             strokeLinecap="round"
           />
-
-          {/* Inflow Line (Electric Crimson) */}
           <motion.path
             variants={pathVariants}
             custom={0.6}
@@ -161,10 +146,6 @@ export default function DashboardChart() {
             strokeLinecap="round"
           />
         </svg>
-
-        {/* ========================================================================= */}
-        {/* INTERACTIVE SCANNING BAR LAYER                                            */}
-        {/* ========================================================================= */}
         <div className="absolute inset-0 z-20 flex justify-between pb-6">
           {timelinePoints.map((pt, idx) => (
             <div
@@ -175,14 +156,11 @@ export default function DashboardChart() {
             >
               {hoveredIdx === idx && (
                 <>
-                  {/* The Vertical Indicator Bar Element */}
                   <motion.div
                     layoutId="trackingBar"
                     className="absolute inset-y-0 w-px bg-gradient-to-b from-accentViolet/40 via-accentViolet/20 to-transparent pointer-events-none"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
-
-                  {/* Micro Floating Tooltip Tag showing specific numbers on hover */}
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -208,8 +186,6 @@ export default function DashboardChart() {
           ))}
         </div>
       </div>
-
-      {/* X-Axis Labels */}
       <div className="w-full flex justify-between px-4 -mt-2 text-xs font-semibold text-gray-500">
         {timelinePoints.map((pt, idx) => (
           <span
@@ -220,8 +196,6 @@ export default function DashboardChart() {
           </span>
         ))}
       </div>
-
-      {/* 3. METRICS FOOTER */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-white/[0.06] mt-8 pt-8">
         <motion.div variants={itemVariants} className="group cursor-none">
           <span className="text-[10px] font-bold tracking-widest text-gray-500 uppercase block">

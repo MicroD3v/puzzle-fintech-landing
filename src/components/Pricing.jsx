@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
 
 export default function Pricing() {
-  const [billingCycle, setBillingCycle] = useState("monthly"); // "monthly" or "yearly"
+  const [billingCycle, setBillingCycle] = useState("monthly"); 
 
   const plans = [
     {
@@ -29,7 +29,7 @@ export default function Pricing() {
         "Dedicated account specialist",
         "Priority architectural API hooks",
       ],
-      popular: true, // Highlights with your signature Crimson Rose style
+      popular: true,
     },
   ];
 
@@ -38,7 +38,6 @@ export default function Pricing() {
       id="pricing"
       className="py-24 max-w-7xl mx-auto px-6 text-center overflow-visible"
     >
-      {/* 1. HEADER SECTION */}
       <div className="max-w-3xl mx-auto mb-12">
         <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/5 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_30%,transparent)] text-accentViolet border border-black/[0.05] dark:border-white/[0.08] backdrop-blur-xl shadow-sm">
           Flexible Infrastructure Plans
@@ -51,8 +50,6 @@ export default function Pricing() {
           plans fluidly as transaction volume maps expand.
         </p>
       </div>
-
-      {/* 2. PREMIUM BILLING FREQUENCY SWITCHER TOGGLE */}
       <div className="flex items-center justify-center gap-4 mb-16 select-none">
         <span
           className={`text-sm font-medium transition-colors duration-200 ${billingCycle === "monthly" ? "text-white" : "text-gray-500"}`}
@@ -83,8 +80,6 @@ export default function Pricing() {
           </span>
         </span>
       </div>
-
-      {/* 3. PRICING CARDS DYNAMIC GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
         {plans.map((plan, index) => (
           <motion.div
@@ -117,8 +112,6 @@ export default function Pricing() {
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 min-h-[40px]">
                 {plan.description}
               </p>
-
-              {/* Dynamic Price Display Core Matrix */}
               <div className="mt-6 flex items-baseline gap-1 min-h-[50px]">
                 <span className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
                   <AnimatePresence mode="wait">
@@ -137,8 +130,6 @@ export default function Pricing() {
                   / month
                 </span>
               </div>
-
-              {/* Feature Verification Loops */}
               <ul className="mt-8 space-y-4 border-t border-black/[0.05] dark:border-white/[0.05] pt-6">
                 {plan.features.map((feature, fIndex) => (
                   <li
@@ -154,8 +145,6 @@ export default function Pricing() {
                 ))}
               </ul>
             </div>
-
-            {/* ACTION BUTTON WITH ENHANCED INTERACTION PARAMS */}
             <button
               className={`w-full mt-8 px-6 py-3 min-w-[125px] rounded-xl text-sm font-semibold cursor-none transition-all duration-300 transform-gpu will-change-transform ${
                 plan.popular

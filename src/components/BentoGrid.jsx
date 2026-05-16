@@ -35,7 +35,7 @@ export default function BentoGrid() {
         viewport={{ once: true, margin: "-100px" }}
         className="grid grid-cols-1 md:grid-cols-3 gap-6"
       >
-        {/* CARD 1: Corporate Cards */}
+
         <motion.div
           variants={cardVariants}
           className="md:col-span-2 bg-white/40 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_45%,transparent)] p-8 rounded-3xl border border-black/[0.04] dark:border-white/[0.06] backdrop-blur-xl flex flex-col justify-between group overflow-hidden relative shadow-lg shadow-black/[0.02] dark:shadow-black/30 hover:border-accentViolet/30 transition-all duration-300"
@@ -54,8 +54,6 @@ export default function BentoGrid() {
               reporting maps.
             </p>
           </div>
-
-          {/* Interactive Card Graphic Mockup FIXED */}
           <motion.div
             whileHover={{ rotateY: 15, rotateX: -5, perspective: 1000 }}
             className="mt-8 self-center w-full max-w-sm h-48 bg-gradient-to-br from-accentViolet to-[#E13554] rounded-2xl p-6 text-white shadow-xl flex flex-col justify-between cursor-none transition-all duration-300 hover:shadow-accentViolet/20"
@@ -82,8 +80,6 @@ export default function BentoGrid() {
             </div>
           </motion.div>
         </motion.div>
-
-        {/* CARD 2: Yield Automation */}
         <motion.div
           variants={cardVariants}
           className="bg-white/40 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_45%,transparent)] p-8 rounded-3xl border border-black/[0.04] dark:border-white/[0.06] backdrop-blur-xl flex flex-col justify-between shadow-lg shadow-black/[0.02] dark:shadow-black/30 hover:border-accentEmerald/30 transition-all duration-300"
@@ -101,8 +97,6 @@ export default function BentoGrid() {
             </p>
           </div>
         </motion.div>
-
-        {/* CARD 3: SOC2 Compliance Lock */}
         <motion.div
           variants={cardVariants}
           className="bg-white/40 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_45%,transparent)] p-8 rounded-3xl border border-black/[0.04] dark:border-white/[0.06] backdrop-blur-xl flex flex-col justify-between shadow-lg shadow-black/[0.02] dark:shadow-black/30 hover:border-amber-500/30 transition-all duration-300"
@@ -120,8 +114,6 @@ export default function BentoGrid() {
             </p>
           </div>
         </motion.div>
-
-        {/* CARD 4: Ledger API */}
         <motion.div
           variants={cardVariants}
           className="md:col-span-2 bg-white/40 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_45%,transparent)] p-8 rounded-3xl border border-black/[0.04] dark:border-white/[0.06] backdrop-blur-xl flex flex-col justify-between group overflow-hidden relative shadow-lg shadow-black/[0.02] dark:shadow-black/30 hover:border-accentViolet/30 transition-all duration-300"
@@ -139,8 +131,6 @@ export default function BentoGrid() {
               or legacy ERP architectures using simple webhooks.
             </p>
           </div>
-
-          {/* Code Syntax Highlight Terminal Block */}
           <div className="mt-8 bg-black/20 dark:bg-black/40 border border-black/[0.06] dark:border-white/[0.05] rounded-xl p-4 font-mono text-xs text-gray-500 dark:text-gray-400 shadow-inner leading-relaxed">
             <div>
               <span className="text-accentEmerald">const</span> client =

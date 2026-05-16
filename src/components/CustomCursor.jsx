@@ -7,8 +7,6 @@ export default function CustomCursor() {
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-
-  // Apply fluid physics spring padding to simulate a "trailing lag" effect
   const springConfig = { damping: 35, stiffness: 450, mass: 0.4 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);

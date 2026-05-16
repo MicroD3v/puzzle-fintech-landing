@@ -4,13 +4,7 @@ import { ArrowRight, Shield, Zap, RefreshCw } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-screen pt-40 pb-20 flex flex-col items-center justify-center overflow-visible px-6 text-center">
-      {/* ========================================================================= */}
-      {/* HIGH-FIDELITY AURORA FLARES: Deep blending with color-mix logic           */}
-      {/* ========================================================================= */}
-      {/* Left Aurora Cloud */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 sm:w-[550px] sm:h-[550px] bg-[color-mix(in_srgb,var(--color-accentViolet)_10%,transparent)] rounded-full blur-[140px] -z-10 mix-blend-plus-lighter animate-[pulse_8s_ease-in-out_infinite] pointer-events-none" />
-
-      {/* Right Aurora Cloud */}
       <div className="absolute bottom-1/4 right-1/4 w-72 h-72 sm:w-[550px] sm:h-[550px] bg-[color-mix(in_srgb,var(--color-accentEmerald)_6%,transparent)] rounded-full blur-[160px] -z-10 mix-blend-plus-lighter delay-1000 animate-[pulse_10s_ease-in-out_infinite] pointer-events-none" />
 
       <motion.div
@@ -19,7 +13,6 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto"
       >
-        {/* Top Feature Tag: Upgraded spec reflection border */}
         <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/5 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_30%,transparent)] text-accentViolet border border-black/[0.05] dark:border-white/[0.08] backdrop-blur-xl shadow-sm">
           Next-Gen Piece-by-Piece Financial Control
         </span>
@@ -43,7 +36,6 @@ export default function Hero() {
         transition={{ delay: 0.2, duration: 0.6 }}
         className="mt-10 flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md"
       >
-        {/* Upgraded with your clean hover color selection */}
         <button className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white font-semibold cursor-none transition-all duration-300 transform-gpu will-change-transform bg-accentViolet shadow-xl shadow-accentViolet/20 hover:bg-rose-600 hover:scale-[1.02] hover:shadow-2xl hover:shadow-rose-500/20 active:scale-[0.98]">
           Open Free Account <ArrowRight size={18} />
         </button>
@@ -61,8 +53,6 @@ export default function Hero() {
           Book a Demo
         </button>
       </motion.div>
-
-      {/* Mini Feature Badges: Polished into glassy premium surfaces */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
 
-// Custom Stacked Puzzle Icon Component matching your design precisely
 export const PuzzleLogoIcon = ({ className = "w-6 h-6" }) => (
   <svg
     viewBox="0 0 24 24"
@@ -13,11 +12,8 @@ export const PuzzleLogoIcon = ({ className = "w-6 h-6" }) => (
     strokeLinejoin="round"
     className={`${className} text-accentViolet`}
   >
-    {/* Top Layer */}
     <path d="M12 2L2 7l10 5 10-5-10-5z" />
-    {/* Middle Layer */}
-    <path d="M2 12l10 5 10-5" />
-    {/* Bottom Layer */}
+    <path d="M2 12l10 5 10-5" />/
     <path d="M2 17l10 5 10-5" />
   </svg>
 );
@@ -28,7 +24,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 border-b border-black/[0.05] dark:border-white/[0.06] bg-white/40 dark:bg-darkBg/40 backdrop-blur-xl transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between py-4">
-        {/* LOGO LINK: Returns to top with the exact puzzle icon */}
         <a
           href="#"
           onClick={(e) => {
@@ -41,7 +36,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
           <span className="tracking-tight">Puzzle</span>
         </a>
 
-        {/* DESKTOP LINKS */}
         <div className="hidden md:flex items-center gap-8 text-gray-600 dark:text-gray-300 font-medium">
           <a
             href="#features"
@@ -62,8 +56,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
             Pricing
           </a>
         </div>
-
-        {/* DESKTOP ACTIONS */}
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -71,14 +63,10 @@ export default function Navbar({ darkMode, setDarkMode }) {
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-
-          {/* FIXED: Added minimum structural dimensions and wide horizontal padding */}
           <button className="px-6 py-2.5 min-w-[125px] rounded-xl text-white text-sm font-semibold cursor-none transition-all duration-300 transform-gpu will-change-transform bg-accentViolet shadow-md shadow-accentViolet/10 hover:bg-[#d9304f] hover:scale-[1.03] hover:shadow-lg hover:shadow-accentViolet/25 active:scale-[0.97]">
             Get Started
           </button>
         </div>
-
-        {/* MOBILE MENU TOGGLES */}
         <div className="md:hidden flex items-center gap-4">
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -94,8 +82,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
           </button>
         </div>
       </div>
-
-      {/* MOBILE EXPANDED INTERFACE TIER */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -123,8 +109,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
           >
             Pricing
           </a>
-
-          {/* MOBILE GET STARTED: Upgraded to look premium and match desktop styling loops */}
           <button className="w-full mt-2 py-3 rounded-xl text-white font-semibold cursor-none transition-all duration-300 transform-gpu will-change-transform bg-accentViolet shadow-md shadow-accentViolet/10 hover:bg-[#d9304f] active:scale-[0.98]">
             Get Started
           </button>

@@ -5,15 +5,13 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
 
-  /* 1. Luxury Dark Mode Colors */
-  --color-darkBg: #0d080a; /* Rich Rose-tinted Obsidian Black */
-  --color-darkCard: #160f12; /* Deep Crimson Charcoal */
 
-  /* 2. Vibrant Accent Colors */
-  --color-accentViolet: #f43f5e; /* Electric Crimson Rose */
-  --color-accentEmerald: #2dd4bf; /* Neon Mint Mint */
+  --color-darkBg: #0d080a; 
+  --color-darkCard: #160f12;
 
-  /* 3. NEW: Smooth Global Spring Timings for animations */
+  --color-accentViolet: #f43f5e; 
+  --color-accentEmerald: #2dd4bf; 
+
   --animate-spring: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -26,7 +24,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 4. FIXED: Wipes out the cheap native hand cursor pointer globally */
 @media (min-width: 1024px) {
   html,
   body,
@@ -39,7 +36,6 @@ body {
     cursor: none !important;
   }
 
-  /* Retain the safe standard text beam indicator ONLY for form inputs */
   input,
   textarea,
   select {
@@ -47,7 +43,6 @@ body {
   }
 }
 
-/* 5. NEW: Smooth System Scrollbar for Premium Translucent Themes */
 ::-webkit-scrollbar {
   width: 8px;
 }

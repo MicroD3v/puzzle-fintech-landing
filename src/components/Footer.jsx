@@ -4,7 +4,6 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-100 dark:border-gray-900 bg-white dark:bg-darkBg transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12">
-        {/* Brand Block - Fixed with custom crisp stacked puzzle vector logo */}
         <div className="lg:col-span-4 flex flex-col gap-4">
           <div className="flex items-center gap-2.5 font-bold text-xl text-gray-900 dark:text-white">
             <PuzzleLogoIcon className="w-6 h-6" />
@@ -16,8 +15,6 @@ export default function Footer() {
             liquidity mapping, and treasury governance models for scaling teams.
           </p>
         </div>
-
-        {/* Dynamic Link Architecture Groups */}
         <div className="grid grid-cols-2 gap-8 lg:col-span-4 w-full">
           <div>
             <h4 className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
@@ -77,8 +74,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
-        {/* Newsletter Section Container */}
         <div className="lg:col-span-4 flex flex-col gap-3 w-full">
           <h4 className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">
             Stay updated
