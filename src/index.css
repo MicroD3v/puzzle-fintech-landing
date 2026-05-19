@@ -1,16 +1,16 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
 
-
-  --color-darkBg: #0d080a; 
+  --color-darkBg: #0d080a;
   --color-darkCard: #160f12;
 
-  --color-accentViolet: #f43f5e; 
-  --color-accentEmerald: #2dd4bf; 
+  --color-accentViolet: #f43f5e;
+  --color-accentEmerald: #2dd4bf;
 
   --animate-spring: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -18,30 +18,45 @@
 body {
   font-family: var(--font-sans);
   transition:
-    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+          background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 @media (min-width: 1024px) {
   html,
   body,
+  #root,
+  div,
+  section,
+  main,
+  header,
+  nav,
   a,
   button,
   svg,
-  [role="button"],
+  span,
+  p,
+  h1,
+  h2,
+  h3,
   .cursor-pointer,
+  [role="button"],
   * {
     cursor: none !important;
   }
 
+
   input,
   textarea,
-  select {
+  select,
+  [contenteditable="true"] {
     cursor: text !important;
   }
 }
+
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -56,4 +71,13 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accentViolet);
+}
+
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb:hover {
+    cursor: none !important;
+  }
 }
