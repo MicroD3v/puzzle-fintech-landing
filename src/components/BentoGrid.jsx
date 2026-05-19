@@ -3,6 +3,38 @@ import { useState, useRef, useEffect } from "react";
 import { CreditCard, TrendingUp, ShieldCheck, Cpu } from "lucide-react";
 
 
+function AnimatedYieldCounter({ isVisible }) {
+  const [count, setCount] = useState(0.0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let start = 0;
+    const end = 99.9;
+    const duration = 1200;
+    const increment = end / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.round(start * 10) / 10);
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [isVisible]);
+
+  return (
+   <span className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight tabular-nums">
+      {count.toFixed(1)}%
+    </span>
+  );
+}
+
+
 function TypewriterTerminal({ isVisible }) {
   const codeLines = [
     'const client = puzzle.initialize("pk_live_8392");',
@@ -44,8 +76,6 @@ function TypewriterTerminal({ isVisible }) {
 
   return (
    <div className="mt-8 bg-black/20 dark:bg-black/40 border border-black/[0.06] dark:border-white/[0.05] rounded-xl p-5 font-mono text-xs text-gray-500 dark:text-gray-400 shadow-inner leading-relaxed min-h-[120px] flex flex-col justify-center">
-
-
      <div className="min-h-[1.5rem]">
        {displayedLines[0] && (
         <>
@@ -58,7 +88,6 @@ function TypewriterTerminal({ isVisible }) {
        )}
      </div>
 
-
      <div className="min-h-[1.5rem]">
        {displayedLines[1] && (
         <>
@@ -69,7 +98,6 @@ function TypewriterTerminal({ isVisible }) {
         <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="text-accentViolet ml-0.5 font-bold">|</motion.span>
        )}
      </div>
-
 
      <div className="min-h-[1.5rem] pl-4">
        {displayedLines[2] && (
@@ -82,7 +110,6 @@ function TypewriterTerminal({ isVisible }) {
        )}
      </div>
 
-
      <div className="min-h-[1.5rem] pl-4">
        {displayedLines[3] && (
         <>
@@ -93,7 +120,6 @@ function TypewriterTerminal({ isVisible }) {
         <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="text-accentViolet ml-0.5 font-bold">|</motion.span>
        )}
      </div>
-
 
      <div className="min-h-[1.5rem]">
        {displayedLines[4] && <>{`})`};</>}
@@ -108,22 +134,43 @@ function TypewriterTerminal({ isVisible }) {
 export default function BentoGrid() {
   const cardContainerRef = useRef(null);
   const apiCardRef = useRef(null);
-  const [isCardHovered, setIsCardHovered] = useState(false);
+
+
+  const yieldCardRef = useRef(null);
+  const [yieldVisible, setYieldVisible] = useState(false);
   const [apiVisible, setApiVisible] = useState(false);
+  const [isCardHovered, setIsCardHovered] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+
+    const apiObserver = new IntersectionObserver(
      ([entry]) => {
        if (entry.isIntersecting) {
          setApiVisible(true);
-         observer.disconnect();
+         apiObserver.disconnect();
        }
      },
      { threshold: 0.2 }
     );
 
-    if (apiCardRef.current) observer.observe(apiCardRef.current);
-    return () => observer.disconnect();
+    // Observer for Counter Card
+    const yieldObserver = new IntersectionObserver(
+     ([entry]) => {
+       if (entry.isIntersecting) {
+         setYieldVisible(true);
+         yieldObserver.disconnect();
+       }
+     },
+     { threshold: 0.3 }
+    );
+
+    if (apiCardRef.current) apiObserver.observe(apiCardRef.current);
+    if (yieldCardRef.current) yieldObserver.observe(yieldCardRef.current);
+
+    return () => {
+      apiObserver.disconnect();
+      yieldObserver.disconnect();
+    };
   }, []);
 
   const x = useMotionValue(0);
@@ -136,7 +183,6 @@ export default function BentoGrid() {
   const handleMouseMove = (e) => {
     if (!cardContainerRef.current) return;
     const rect = cardContainerRef.current.getBoundingClientRect();
-
     const width = rect.width;
     const height = rect.height;
 
@@ -243,19 +289,26 @@ export default function BentoGrid() {
          </motion.div>
        </motion.div>
 
-
+       {/* Card 2: Yield Automation Box */}
        <motion.div
+        ref={yieldCardRef}
         variants={cardVariants}
-        className="bg-white/40 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_45%,transparent)] p-8 rounded-3xl border border-black/[0.04] dark:border-white/[0.06] backdrop-blur-xl flex flex-col justify-between shadow-lg shadow-black/[0.02] dark:shadow-black/30 hover:border-accentEmerald/30 transition-all duration-300"
+        className="bg-white/40 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_45%,transparent)] p-8 rounded-3xl border border-black/[0.04] dark:border-white/[0.06] backdrop-blur-xl flex flex-col justify-between shadow-lg shadow-black/[0.02] dark:shadow-black/30 hover:border-accentEmerald/30 transition-all duration-300 min-h-[240px]"
        >
          <div>
            <div className="p-3 bg-black/[0.03] dark:bg-white/[0.03] text-accentEmerald rounded-xl w-fit border border-black/[0.05] dark:border-white/[0.05]">
              <TrendingUp />
            </div>
-           <h3 className="text-xl font-bold mt-6 text-gray-900 dark:text-white">
+
+           {/* 🚀 Dynamic Counter Component Instance */}
+           <div className="mt-6 min-h-[40px] flex items-baseline">
+             <AnimatedYieldCounter isVisible={yieldVisible} />
+           </div>
+
+           <h3 className="text-xl font-bold mt-2 text-gray-900 dark:text-white">
              99.9% Yield Automation
            </h3>
-           <p className="text-gray-600 dark:text-gray-400 mt-2">
+           <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">
              Route idle payroll reserves dynamically across premium government
              treasury bills safely.
            </p>
@@ -274,14 +327,14 @@ export default function BentoGrid() {
            <h3 className="text-xl font-bold mt-6 text-gray-900 dark:text-white">
              SOC2 Compliance Lock
            </h3>
-           <p className="text-gray-600 dark:text-gray-400 mt-2">
+           <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">
              Enterprise identity governance layers handling cross-border
              transaction compliance routing natively.
            </p>
          </div>
        </motion.div>
 
-       {/* Card 4:  Linked Ledger API */}
+       {/* Card 4: Deep Linked Ledger API */}
        <motion.div
         ref={apiCardRef}
         variants={cardVariants}
@@ -295,7 +348,7 @@ export default function BentoGrid() {
            <h3 className="text-2xl font-bold mt-6 text-gray-900 dark:text-white">
              Deep-Linked Ledger API
            </h3>
-           <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-md">
+           <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-md text-sm">
              Inject clean programmatic ledgers directly into QuickBooks, Xero,
              or legacy ERP architectures using simple webhooks.
            </p>
