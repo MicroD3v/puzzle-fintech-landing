@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "lenis/dist/lenis.css";
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -29,28 +28,18 @@ body {
   html,
   body,
   #root,
-  div,
-  section,
-  main,
-  header,
-  nav,
-  a,
-  button,
-  svg,
-  span,
-  p,
-  h1,
-  h2,
-  h3,
-  .cursor-pointer,
-  [role="button"],
-  * {
+  *,
+  *:hover,
+  *::before,
+  *::after {
     cursor: none !important;
   }
 
 
   input,
+  input:focus,
   textarea,
+  textarea:focus,
   select,
   [contenteditable="true"] {
     cursor: text !important;
