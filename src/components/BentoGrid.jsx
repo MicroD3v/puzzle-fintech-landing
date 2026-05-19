@@ -153,7 +153,7 @@ export default function BentoGrid() {
      { threshold: 0.2 }
     );
 
-    // Observer for Counter Card
+
     const yieldObserver = new IntersectionObserver(
      ([entry]) => {
        if (entry.isIntersecting) {
@@ -232,7 +232,7 @@ export default function BentoGrid() {
       viewport={{ once: true, margin: "-100px" }}
       className="grid grid-cols-1 md:grid-cols-3 gap-6"
      >
-       {/* Card 1: Corporate Cards Box */}
+
        <motion.div
         ref={cardContainerRef}
         onMouseMove={handleMouseMove}
@@ -289,7 +289,7 @@ export default function BentoGrid() {
          </motion.div>
        </motion.div>
 
-       {/* Card 2: Yield Automation Box */}
+
        <motion.div
         ref={yieldCardRef}
         variants={cardVariants}
@@ -300,7 +300,7 @@ export default function BentoGrid() {
              <TrendingUp />
            </div>
 
-           {/* 🚀 Dynamic Counter Component Instance */}
+
            <div className="mt-6 min-h-[40px] flex items-baseline">
              <AnimatedYieldCounter isVisible={yieldVisible} />
            </div>
@@ -315,7 +315,7 @@ export default function BentoGrid() {
          </div>
        </motion.div>
 
-       {/* Card 3: Compliance Box */}
+
        <motion.div
         variants={cardVariants}
         className="bg-white/40 dark:bg-[color-mix(in_srgb,var(--color-darkCard)_45%,transparent)] p-8 rounded-3xl border border-black/[0.04] dark:border-white/[0.06] backdrop-blur-xl flex flex-col justify-between shadow-lg shadow-black/[0.02] dark:shadow-black/30 hover:border-amber-500/30 transition-all duration-300"
@@ -334,7 +334,7 @@ export default function BentoGrid() {
          </div>
        </motion.div>
 
-       {/* Card 4: Deep Linked Ledger API */}
+
        <motion.div
         ref={apiCardRef}
         variants={cardVariants}
