@@ -37,7 +37,7 @@ If you want to run this fintech template layout locally, execute the following s
 
 ```bash
 # 1. Clone the master repository branch
-git clone https://github.com
+git clone https://github.com/MicroD3v/puzzle-fintech-landing.git
 
 # 2. Enter into the project folder directory
 cd puzzle-fintech-landing
